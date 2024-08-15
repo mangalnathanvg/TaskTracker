@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
+import {addTasks} from "./commands/addTask.js";
+import {updateTask} from "./commands/updateTask.js";
 const program = new Command()
 
 program
@@ -11,15 +13,12 @@ program
     .command('add')
     .description('Add a task')
     .option('-t, --task <task>', 'Task Description')
-    .action((options) => {
-        const task = options.task;
+    .action(addTasks)
 
-        if(task){
-            console.log(`Task added: ${task}`);
-        }
-        else{
-            console.error("No task description provided.")
-        }
-    })
+program
+    .command('update <id> <description>')
+    .description('Update a task')
+    .action(updateTask)
+
 
 program.parse(process.argv);
