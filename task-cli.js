@@ -2,6 +2,7 @@
 import { Command } from 'commander';
 import {addTasks} from "./commands/addTask.js";
 import {updateTask} from "./commands/updateTask.js";
+import {deleteTask} from "./commands/deleteTask.js";
 const program = new Command()
 
 program
@@ -10,9 +11,8 @@ program
     .version('1.0.0')
 
 program
-    .command('add')
+    .command('add <description>')
     .description('Add a task')
-    .option('-t, --task <task>', 'Task Description')
     .action(addTasks)
 
 program
@@ -20,5 +20,9 @@ program
     .description('Update a task')
     .action(updateTask)
 
+program
+    .command('delete <id>')
+    .description('Delete a task')
+    .action(deleteTask)
 
 program.parse(process.argv);

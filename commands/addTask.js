@@ -1,12 +1,14 @@
 import {writeData, createDataStoreFileIfNotExists, fetchData} from "../utility/fileUtilities.js";
 import {dataStoreFileName, dataStoreFolderPath, Status} from "../utility/config.js";
 import {generateShortUUID} from "../utility/uuidGenerator.js";
+import {isInvalidDescription, sanitizeString} from "../utility/inputUtilities.js";
 
-export function addTasks(options){
-    const { task } = options;
+export function addTasks(description){
 
-    if(!task){
-        throw new Error("Invalid Task");
+    description = sanitizeString(description)
+
+    if(isInvalidDescription(description)){
+        throw new Error("Cannot create task. Invalid inputs");
     }
 
     // Create data store if it doesn't exist
@@ -15,7 +17,7 @@ export function addTasks(options){
     // Append JSON data to created data store file
     const data = {
         id: generateShortUUID(),
-        description: task,
+        description: description,
         status: Status.InProgress,
         createdAt: Date.now().toString(),
         updatedAt: Date.now().toString()
