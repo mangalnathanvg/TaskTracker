@@ -18,7 +18,7 @@ export function addTasks(description){
     const data = {
         id: generateShortUUID(),
         description: description,
-        status: Status.InProgress,
+        status: Status.Todo,
         createdAt: Date.now().toString(),
         updatedAt: Date.now().toString()
     }

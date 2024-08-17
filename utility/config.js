@@ -4,7 +4,7 @@ export const dataStoreFolderPath = "./data";
 export const dataStoreFileName = "tasksData.json";
 export const dataStoreFilePath = path.join(dataStoreFolderPath, dataStoreFileName);
 export const Status = Object.freeze({
-    InProgress:   Symbol("in-progress"),
-    Todo:  Symbol("todo"),
-    Done: Symbol("done")
+    InProgress: "in-progress",
+    Todo: "todo",
+    Done: "done"
 });
