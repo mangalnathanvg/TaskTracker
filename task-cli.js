@@ -4,6 +4,7 @@ import {addTasks} from "./commands/addTask.js";
 import {updateTask} from "./commands/updateTask.js";
 import {deleteTask} from "./commands/deleteTask.js";
 import {markDone, markInProgress, markTodo} from "./commands/statusUpdates.js";
+import {list, listAll} from "./commands/listTasks.js";
 const program = new Command()
 
 program
@@ -40,5 +41,15 @@ program
     .command('mark-todo <id>')
     .description(`Mark a task's status as Todo`)
     .action(markTodo)
+
+program
+    .command('list <status>')
+    .description('List tasks by status')
+    .action(list)
+
+program
+    .command('listAll')
+    .description('List all tasks')
+    .action(listAll)
 
 program.parse(process.argv);

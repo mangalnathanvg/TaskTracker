@@ -8,3 +8,7 @@ export const Status = Object.freeze({
     Todo: "todo",
     Done: "done"
 });
+
+export function isValidStatus(status){
+    return Object.values(Status).includes(status);
+}
